@@ -4,9 +4,9 @@
   "description": "A comprehensive starter template for building modern web applications using Express.js with TypeScript. This template comes pre-configured with essential tools such as Jest for testing, SuperTest for HTTP assertions, and Mongoose for MongoDB integration. Additionally, it includes import alias configuration for enhanced code organization and readability. Whether you're starting a new project or looking to streamline your existing Express.js workflow, this template provides a solid foundation for rapid development and deployment.",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "nodemon ./src/server.ts  --ignore ./data",
-    "start": "node dist/server.js",
+    "build": "rm -r dist && tsc && tsc-alias",
+    "dev": "nodemon ./src/server.ts",
+    "start": "NODE_ENV=production node dist/server.js",
     "test": "jest --runInBand",
     "test-watch": "jest --watchAll --runInBand",
     "test-coverage": "jest --coverage --runInBand",
@@ -35,7 +35,7 @@
     "jest": "^29.7.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.2",
-    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5"
   },

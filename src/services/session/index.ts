@@ -1,5 +1,5 @@
 import CONFIG from "@/config";
-import redis from "@/redis";
+import redis from "@/redis-client";
 import { RedisClientType } from "redis";
 
 export type SessionServiceMethodParams = { userId: string; token: string };

@@ -11,7 +11,7 @@ import { AppConfig, NODE_ENV_TYPE } from "./global";
 import authRoutes from "./routes/auth/routes";
 import userRoutes from "./routes/user/routes";
 import adminRoutes from "./routes/admin/routes";
-import redis from "./redis";
+import redisClient from "./redis-client";
 
 class App {
   public httpServer: Server;
@@ -48,8 +48,8 @@ class App {
   public async runRedis() {
     try {
       // redis client
-      redis.on("error", (err) => console.log("Redis Client Error", err));
-      await redis.connect();
+      redisClient.on("error", (err) => console.log("Redis Client Error", err));
+      await redisClient.connect();
       !this.isTestMode && console.log("Connected to Redis");
     } catch (error) {
       console.log(error);
@@ -91,7 +91,7 @@ class App {
   }
   private async closeRedis() {
     try {
-      await redis.disconnect();
+      await redisClient.disconnect();
       !this.isTestMode && console.log("Disconnected from Redis");
     } catch (error) {
       console.log(error);

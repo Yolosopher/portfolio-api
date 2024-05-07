@@ -4,20 +4,15 @@
     "module": "NodeNext",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "NodeNext",
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "dist",
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@types/*": ["src/types/*"],
-      "@lib/*": ["src/lib/*"],
-      "@utils/*": ["src/utils/*"],
-      "@errors": ["src/errors"],
-      "@errors/*": ["src/errors/*"]
+      "@/*": ["src/*"]
     },
     "types": ["@types/jest"]
   },
