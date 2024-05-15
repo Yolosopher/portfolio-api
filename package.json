@@ -1,7 +1,7 @@
 {
-  "name": "express-ts-starter",
+  "name": "portfolio-yolosopher",
   "version": "1.0.0",
-  "description": "A comprehensive starter template for building modern web applications using Express.js with TypeScript. This template comes pre-configured with essential tools such as Jest for testing, SuperTest for HTTP assertions, and Mongoose for MongoDB integration. Additionally, it includes import alias configuration for enhanced code organization and readability. Whether you're starting a new project or looking to streamline your existing Express.js workflow, this template provides a solid foundation for rapid development and deployment.",
+  "description": "Web portfolio of Yolosopher",
   "main": "dist/server.js",
   "scripts": {
     "build": "rm -r dist && tsc && tsc-alias",
