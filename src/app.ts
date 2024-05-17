@@ -17,6 +17,7 @@ import techStackRoutes from "./routes/tech-stack/routes";
 import projectRoutes from "./routes/project/routes";
 import experienceRoutes from "./routes/experience/routes";
 import educationRoutes from "./routes/education/routes";
+import settingRoutes from "./routes/setting/routes";
 
 class App {
   public httpServer: Server;
@@ -82,6 +83,7 @@ class App {
     this._app.use("/project", projectRoutes);
     this._app.use("/experience", experienceRoutes);
     this._app.use("/education", educationRoutes);
+    this._app.use("/setting", settingRoutes);
 
     // Add error handling middleware here
     this._app.use(errorHandler);
