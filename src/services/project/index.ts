@@ -17,7 +17,7 @@ export class ProjectService {
     if (isValidObjectId(idOrName)) {
       return await this.projectModel.findById(idOrName);
     }
-    return await this.projectModel.findOne({ idOrName: idOrName });
+    return await this.projectModel.findOne({ name: idOrName });
   }
 
   public async create({

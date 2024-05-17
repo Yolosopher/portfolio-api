@@ -12,7 +12,7 @@ export class TechStackService {
     if (isValidObjectId(idOrName)) {
       return await this.techStackModel.findById(idOrName);
     }
-    return await this.techStackModel.findOne({ idOrName: idOrName });
+    return await this.techStackModel.findOne({ name: idOrName });
   }
 
   public async create({

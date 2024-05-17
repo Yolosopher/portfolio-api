@@ -1,4 +1,5 @@
 import BadRequestError from "@/errors/BadRequestError";
+import NotFoundError from "@/errors/NotFoundError";
 import techStackService from "@/services/tech-stach";
 import { Request, Response } from "express";
 
@@ -53,6 +54,12 @@ class TechStackController {
     const idOrName = req.params.idOrName;
 
     const result = await techStackService.getOne(idOrName);
+
+    if (!result) {
+      throw new NotFoundError({
+        message: "TechStack not found",
+      });
+    }
 
     res.status(200).json({
       message: "TechStack fetched successfully",

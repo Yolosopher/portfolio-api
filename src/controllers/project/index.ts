@@ -1,4 +1,5 @@
 import BadRequestError from "@/errors/BadRequestError";
+import NotFoundError from "@/errors/NotFoundError";
 import { IProject, IProjectPopulated } from "@/models/project/types";
 import projectService from "@/services/project";
 import { Request, Response } from "express";
@@ -56,6 +57,12 @@ class ProjectController {
 
     let result: null | IProjectPopulated | IProject =
       await projectService.getOne(idOrName);
+
+    if (!result) {
+      throw new NotFoundError({
+        message: "Project not found",
+      });
+    }
 
     if (result) {
       result = (await result.populate<IProjectPopulated>("stack"))!;
