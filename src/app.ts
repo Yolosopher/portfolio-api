@@ -13,6 +13,10 @@ import userRoutes from "./routes/user/routes";
 import adminRoutes from "./routes/admin/routes";
 import redisClient from "./redis-client";
 import userService from "./services/user";
+import techStackRoutes from "./routes/tech-stack/routes";
+import projectRoutes from "./routes/project/routes";
+import experienceRoutes from "./routes/experience/routes";
+import educationRoutes from "./routes/education/routes";
 
 class App {
   public httpServer: Server;
@@ -74,6 +78,10 @@ class App {
     this._app.use("/auth", authRoutes);
     this._app.use("/user", userRoutes);
     this._app.use("/admin", adminRoutes);
+    this._app.use("/tech-stack", techStackRoutes);
+    this._app.use("/project", projectRoutes);
+    this._app.use("/experience", experienceRoutes);
+    this._app.use("/education", educationRoutes);
 
     // Add error handling middleware here
     this._app.use(errorHandler);
