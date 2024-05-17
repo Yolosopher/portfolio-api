@@ -13,13 +13,20 @@
     "docker_redis": "sudo docker-compose up -d"
   },
   "keywords": [
+    "nodejs",
     "express",
     "typescript",
+    "backend",
+    "api",
+    "portfolio",
+    "web-development",
+    "mongoose",
+    "rest-api",
+    "jwt",
+    "redis",
     "jest",
     "supertest",
-    "mongoose",
-    "starter",
-    "template"
+    "validation"
   ],
   "author": "Yolosopher",
   "license": "ISC",
