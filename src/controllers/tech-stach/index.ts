@@ -1,4 +1,4 @@
-import UnauthorizedError from "@/errors/UnauthorizedError";
+import BadRequestError from "@/errors/BadRequestError";
 import techStackService from "@/services/tech-stach";
 import { Request, Response } from "express";
 
@@ -61,12 +61,25 @@ class TechStackController {
   }
   public async update(req: Request, res: Response) {
     const idOrName = req.params.idOrName;
-    const { name, icon } = req.body;
 
-    const payload: any = {
-      name,
-      icon,
-    };
+    if (
+      !req.body.name &&
+      !req.body.icon &&
+      !req.body.level &&
+      !req.body.description
+    ) {
+      throw new BadRequestError({
+        message: "Nothing to update",
+      });
+    }
+
+    const payload: any = {};
+    if (req.body.name) {
+      payload.name = req.body.name;
+    }
+    if (req.body.icon) {
+      payload.icon = req.body.icon;
+    }
     if (
       req.body.level &&
       typeof req.body.level === "number" &&
