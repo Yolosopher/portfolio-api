@@ -45,6 +45,8 @@ const CONFIG = {
     email: process.env.DEFAULT_SUPER_ADMIN_EMAIL!,
     password: process.env.DEFAULT_SUPER_ADMIN_PASSWORD!,
   },
+  img_store_key: process.env.IMG_STORE_API_KEY!,
+  img_store_origin: process.env.IMG_STORE_ORIGIN!,
 };
 
 export default CONFIG;

@@ -7,16 +7,16 @@ services:
       - "6379:6379"
     volumes:
       - cache:/data
-  mongodb-:
-    image: mongo:4.4.6
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb:/data/db
+  # mongodb-:
+  #   image: mongo:4.4.6
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongodb:/data/db
 
 volumes:
-  mongodb:
-    driver: local
+  # mongodb:
+  #   driver: local
   cache:
     driver: local
