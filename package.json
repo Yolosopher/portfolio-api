@@ -1,7 +1,7 @@
 {
   "name": "portfolio-api",
   "version": "1.0.0",
-  "description": "Web portfolio of Yolosopher",
+  "description": "This is the backend API for the web portfolio of Yolosopher. It is built using Node.js, Express, and TypeScript, and it includes various other libraries and tools for a comprehensive and robust development setup.",
   "main": "dist/server.js",
   "scripts": {
     "build": "rm -r dist && tsc && tsc-alias",
@@ -10,7 +10,7 @@
     "test": "jest --runInBand",
     "test-watch": "jest --watchAll --runInBand",
     "test-coverage": "jest --coverage --runInBand",
-    "docker_bg": "sudo docker-compose up -d"
+    "docker_redis": "sudo docker-compose up -d"
   },
   "keywords": [
     "express",
