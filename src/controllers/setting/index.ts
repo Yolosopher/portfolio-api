@@ -1,7 +1,7 @@
 import settingService from "@/services/setting";
 import { Request, Response } from "express";
 
-class ProjectController {
+class SettingController {
   constructor() {}
 
   public async fetch(req: Request, res: Response) {
@@ -22,6 +22,6 @@ class ProjectController {
   }
 }
 
-const projectController = new ProjectController();
+const projectController = new SettingController();
 
 export default projectController;
