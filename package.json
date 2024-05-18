@@ -4,7 +4,7 @@
   "description": "This is the backend API for the web portfolio of Yolosopher. It is built using Node.js, Express, and TypeScript, and it includes various other libraries and tools for a comprehensive and robust development setup.",
   "main": "dist/server.js",
   "scripts": {
-    "build": "rm -r dist && tsc && tsc-alias",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "dev": "nodemon ./src/server.ts",
     "start": "NODE_ENV=production node dist/server.js",
     "test": "jest --runInBand",
