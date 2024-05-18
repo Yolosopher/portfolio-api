@@ -13,27 +13,22 @@ const ProjectSchema = new Schema<IProject>(
     },
     description: {
       type: String,
-      required: true,
       default: "No description yet",
     },
     image: {
       type: String,
-      required: true,
       default: "",
     },
     github: {
       type: String,
-      required: true,
       default: "",
     },
     preview: {
       type: String,
-      required: true,
       default: "",
     },
     stack: {
       type: [{ type: Schema.Types.ObjectId, ref: "TechStack" }],
-      required: true,
       default: [],
     },
   },

@@ -24,7 +24,6 @@ const ExperienceSchema = new Schema<IExperience>(
     },
     work_hours: {
       type: String,
-      required: true,
       enum: [WorkHours.FULL_TIME, WorkHours.PART_TIME, WorkHours.INTERNSHIP],
       default: WorkHours.FULL_TIME,
     },

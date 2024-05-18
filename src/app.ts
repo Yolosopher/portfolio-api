@@ -79,7 +79,7 @@ class App {
     this._app.use("/auth", authRoutes);
     this._app.use("/user", userRoutes);
     this._app.use("/admin", adminRoutes);
-    this._app.use("/tech-stack", techStackRoutes);
+    this._app.use("/tech", techStackRoutes);
     this._app.use("/project", projectRoutes);
     this._app.use("/experience", experienceRoutes);
     this._app.use("/education", educationRoutes);

@@ -14,18 +14,15 @@ const TechStackSchema = new Schema<ITechStack>(
     },
     icon: {
       type: String,
-      required: true,
       default: "",
     },
     level: {
       type: Number,
-      required: true,
       enum: arrayGenerate(10),
       default: 5,
     },
     description: {
       type: String,
-      required: true,
       default: "",
     },
   },
