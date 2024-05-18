@@ -7,7 +7,6 @@ import {
   ProjectModel,
 } from "@/models/project/types";
 import DuplicateError from "@/errors/DuplicateError";
-import imageStoreService from "../image-store";
 import techStackService from "../tech-stach";
 
 export class ProjectService {
@@ -84,11 +83,6 @@ export class ProjectService {
       throw new BadRequestError({ message: "Project project not found" });
     }
 
-    if (project.image) {
-      // delete image file
-      await imageStoreService.delete(project.image);
-    }
-
     return await this.projectModel.findByIdAndDelete(project._id.toString(), {
       new: true,
     });
@@ -111,11 +105,6 @@ export class ProjectService {
           message: "Project with this name already exists",
         });
       }
-    }
-
-    if (payload.image && project.image) {
-      // delete old image file
-      await imageStoreService.delete(project.image);
     }
 
     return await this.projectModel.findByIdAndUpdate(

@@ -3,7 +3,6 @@ import BadRequestError from "@/errors/BadRequestError";
 import { isValidObjectId } from "mongoose";
 import { ITechStack, LEVEL, TechStackModel } from "@/models/tech-stach/types";
 import DuplicateError from "@/errors/DuplicateError";
-import imageStoreService from "../image-store";
 
 export class TechStackService {
   constructor(protected techStackModel: TechStackModel) {}
@@ -56,11 +55,6 @@ export class TechStackService {
       throw new BadRequestError({ message: "Tech stack not found" });
     }
 
-    if (stack.icon) {
-      // delete icon file
-      await imageStoreService.delete(stack.icon);
-    }
-
     return await this.techStackModel.findByIdAndDelete(stack._id.toString(), {
       new: true,
     });
@@ -80,11 +74,6 @@ export class TechStackService {
           message: "Stack with this name already exists",
         });
       }
-    }
-
-    if (payload.icon && stack.icon) {
-      // delete old icon file
-      await imageStoreService.delete(stack.icon);
     }
 
     return await this.techStackModel.findByIdAndUpdate(
