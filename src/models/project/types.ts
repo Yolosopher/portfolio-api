@@ -10,6 +10,7 @@ export interface IProject extends Document {
   github: string;
   preview: string;
   image: string;
+  group: string;
 }
 
 export interface IProjectPopulated extends Omit<IProject, "stack"> {

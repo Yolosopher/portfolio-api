@@ -26,6 +26,7 @@ export class ProjectService {
     preview,
     description,
     stack,
+    group,
   }: {
     name: string;
     image?: string;
@@ -33,6 +34,7 @@ export class ProjectService {
     preview?: string;
     description?: string;
     stack?: string[];
+    group?: string;
   }) {
     // check if project already exists
     const projectExists = await this.getOne(name);
@@ -56,6 +58,10 @@ export class ProjectService {
 
     if (preview) {
       payload.preview = preview;
+    }
+
+    if (group) {
+      payload.group = group;
     }
 
     if (description) {
@@ -116,9 +122,9 @@ export class ProjectService {
     );
   }
 
-  public async getAll() {
+  public async getAll(query: any) {
     return await this.projectModel
-      .find({})
+      .find(query)
       .populate<IProjectPopulated>("stack");
   }
 }

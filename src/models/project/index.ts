@@ -31,6 +31,10 @@ const ProjectSchema = new Schema<IProject>(
       type: [{ type: Schema.Types.ObjectId, ref: "TechStack" }],
       default: [],
     },
+    group: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: false,

@@ -12,6 +12,9 @@ class ProjectController {
     const payload: any = {
       name,
     };
+    if (req.body.group) {
+      payload.group = req.body.group;
+    }
     if (req.body.image) {
       payload.image = req.body.image;
     }
@@ -45,7 +48,9 @@ class ProjectController {
     });
   }
   public async fetchAll(req: Request, res: Response) {
-    const result = await projectService.getAll();
+    const group = req.query?.group as string;
+    const query = group ? { group } : {};
+    const result = await projectService.getAll(query);
 
     res.status(200).json({
       message: "Projects fetched successfully",
@@ -83,7 +88,8 @@ class ProjectController {
       !req.body.stack &&
       !req.body.description &&
       !req.body.preview &&
-      !req.body.github
+      !req.body.github &&
+      !req.body.group
     ) {
       throw new BadRequestError({
         message: "Nothing to update",
@@ -107,6 +113,9 @@ class ProjectController {
     }
     if (req.body.github) {
       payload.github = req.body.github;
+    }
+    if (req.body.group) {
+      payload.group = req.body.group;
     }
     const result = await projectService.update(idOrName, payload);
 
