@@ -13,7 +13,7 @@ export const createProjectSchema = z.object({
     }),
   image: z
     .string({
-      message: "Icon name is required",
+      message: "Image name is required",
     })
     .min(1, {
       message: "At least 1 character",
@@ -41,6 +41,17 @@ export const createProjectSchema = z.object({
   github: z
     .string({
       message: "Github link must be a string",
+    })
+    .optional(),
+  group: z
+    .string({
+      message: "Group name is required",
+    })
+    .min(1, {
+      message: "At least 1 character",
+    })
+    .max(255, {
+      message: "Too long",
     })
     .optional(),
 });
