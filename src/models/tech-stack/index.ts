@@ -25,6 +25,11 @@ const TechStackSchema = new Schema<ITechStack>(
       type: String,
       default: "",
     },
+    priority: {
+      type: Number,
+      enum: arrayGenerate(5),
+      default: 3,
+    },
   },
   {
     timestamps: false,

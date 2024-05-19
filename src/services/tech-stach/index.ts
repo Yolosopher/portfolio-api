@@ -1,7 +1,12 @@
-import Stack from "@/models/tech-stach";
+import Stack from "@/models/tech-stack";
 import BadRequestError from "@/errors/BadRequestError";
 import { isValidObjectId } from "mongoose";
-import { ITechStack, LEVEL, TechStackModel } from "@/models/tech-stach/types";
+import {
+  ITechStack,
+  LEVEL,
+  PRIORITY,
+  TechStackModel,
+} from "@/models/tech-stack/types";
 import DuplicateError from "@/errors/DuplicateError";
 
 export class TechStackService {
@@ -19,7 +24,9 @@ export class TechStackService {
     icon,
     level,
     description,
+    priority,
   }: {
+    priority: PRIORITY;
     name: string;
     icon: string;
     level?: LEVEL;
@@ -40,6 +47,10 @@ export class TechStackService {
 
     if (level) {
       payload.level = level;
+    }
+
+    if (priority) {
+      payload.priority = priority;
     }
 
     if (description) {
@@ -86,7 +97,7 @@ export class TechStackService {
   }
 
   public async getAll() {
-    return await this.techStackModel.find({});
+    return await this.techStackModel.find({}).sort({ priority: 1 });
   }
 }
 

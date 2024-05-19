@@ -21,6 +21,15 @@ class TechStackController {
     ) {
       payload.level = req.body.level;
     }
+    if (
+      req.body.priority &&
+      typeof req.body.priority === "number" &&
+      Number.isInteger(req.body.priority) &&
+      req.body.priority >= 1 &&
+      req.body.priority <= 5
+    ) {
+      payload.priority = req.body.priority;
+    }
 
     if (req.body.description) {
       payload.description = req.body.description;
@@ -73,7 +82,8 @@ class TechStackController {
       !req.body.name &&
       !req.body.icon &&
       !req.body.level &&
-      !req.body.description
+      !req.body.description &&
+      !req.body.priority
     ) {
       throw new BadRequestError({
         message: "Nothing to update",
@@ -95,6 +105,15 @@ class TechStackController {
       req.body.level <= 10
     ) {
       payload.level = req.body.level;
+    }
+    if (
+      req.body.priority &&
+      typeof req.body.priority === "number" &&
+      Number.isInteger(req.body.priority) &&
+      req.body.priority >= 1 &&
+      req.body.priority <= 5
+    ) {
+      payload.priority = req.body.priority;
     }
 
     if (req.body.description) {

@@ -1,4 +1,4 @@
-import techStackController from "@/controllers/tech-stach";
+import techStackController from "@/controllers/tech-stack";
 import {
   createTechStackSchema,
   updateTechStackSchema,

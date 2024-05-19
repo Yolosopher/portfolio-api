@@ -1,6 +1,6 @@
 import { TID } from "@/global";
 import { Document, Model } from "mongoose";
-import { ITechStack } from "../tech-stach/types";
+import { ITechStack } from "../tech-stack/types";
 
 export interface IProject extends Document {
   _id: TID;

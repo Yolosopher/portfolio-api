@@ -35,6 +35,20 @@ export const createTechStackSchema = z.object({
       message: "At most 10",
     })
     .optional(),
+  priority: z
+    .number({
+      message: "Priority must be a level between 1 and 5",
+    })
+    .int({
+      message: "Priority must be an integer",
+    })
+    .min(1, {
+      message: "At least 1",
+    })
+    .max(5, {
+      message: "At most 5",
+    })
+    .optional(),
   description: z
     .string({
       message: "Description must be a string",
@@ -77,6 +91,20 @@ export const updateTechStackSchema = z.object({
     })
     .max(10, {
       message: "At most 10",
+    })
+    .optional(),
+  priority: z
+    .number({
+      message: "Priority must be a level between 1 and 5",
+    })
+    .int({
+      message: "Priority must be an integer",
+    })
+    .min(1, {
+      message: "At least 1",
+    })
+    .max(5, {
+      message: "At most 5",
     })
     .optional(),
   description: z
