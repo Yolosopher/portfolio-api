@@ -97,7 +97,7 @@ export class TechStackService {
   }
 
   public async getAll() {
-    return await this.techStackModel.find({}).sort({ priority: 1 });
+    return await this.techStackModel.find({}).sort("priority");
   }
 }
 
