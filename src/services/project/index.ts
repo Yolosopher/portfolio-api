@@ -86,7 +86,7 @@ export class ProjectService {
   public async delete(idOrName: string) {
     const project = await this.getOne(idOrName);
     if (!project) {
-      throw new BadRequestError({ message: "Project project not found" });
+      throw new BadRequestError({ message: "Project not found" });
     }
 
     return await this.projectModel.findByIdAndDelete(project._id.toString(), {

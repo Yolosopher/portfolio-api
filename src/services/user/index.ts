@@ -126,7 +126,7 @@ export class UserService {
     const user = await this.getOne(user_id);
     if (!user) {
       throw new BadRequestError({
-        message: "User not foundaaaaaaa",
+        message: "User not found",
       });
     }
 
