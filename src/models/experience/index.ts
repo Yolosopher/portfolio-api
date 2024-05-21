@@ -34,7 +34,7 @@ const ExperienceSchema = new Schema<IExperience>(
     end_date: {
       type: Date,
       required: false,
-      default: undefined,
+      default: null,
     },
   },
   {

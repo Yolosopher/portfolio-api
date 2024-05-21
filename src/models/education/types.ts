@@ -6,7 +6,7 @@ export interface IEducation extends Document {
   field: string;
   university: string;
   start_date: Date | string;
-  end_date: Date | string;
+  end_date: Date | string | null;
   description: string;
 }
 

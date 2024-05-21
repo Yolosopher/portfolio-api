@@ -14,7 +14,7 @@ export interface IExperience extends Document {
   location: string;
   work_hours: WorkHours;
   start_date: Date | string;
-  end_date: Date | string;
+  end_date: Date | string | null;
   description: string;
 }
 

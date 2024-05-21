@@ -90,7 +90,7 @@ export class EducationService {
 
     return await this.educationModel.findByIdAndUpdate(
       education._id.toString(),
-      { $set: { end_date: undefined } },
+      { $set: { end_date: null } },
       {
         new: true,
       }

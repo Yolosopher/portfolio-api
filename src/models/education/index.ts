@@ -24,7 +24,7 @@ const EducationSchema = new Schema<IEducation>(
     end_date: {
       type: Date,
       required: false,
-      default: undefined,
+      default: null,
     },
   },
   {

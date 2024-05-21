@@ -102,7 +102,7 @@ export class ExperienceService {
 
     return await this.experienceModel.findByIdAndUpdate(
       experience._id.toString(),
-      { $set: { end_date: undefined } },
+      { $set: { end_date: null } },
       {
         new: true,
       }
