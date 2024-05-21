@@ -32,16 +32,26 @@ export const createExperienceSchema = z.object({
     .max(255, {
       message: "Too long",
     }),
-  start_date: z.date({
-    message: "Start date is required",
-  }),
+  start_date: z.preprocess(
+    (arg) => (typeof arg === "string" ? new Date(arg) : undefined),
+    z.date({
+      message: "Start date is required",
+    })
+  ),
   work_hours: z.nativeEnum(WorkHours).optional(),
   description: z
     .string({
       message: "Description must be a string",
     })
     .optional(),
-  end_date: z.date().optional(),
+  end_date: z
+    .preprocess(
+      (arg) => (typeof arg === "string" ? new Date(arg) : undefined),
+      z.date({
+        message: "End date is required",
+      })
+    )
+    .optional(),
 });
 
 export const updateExperienceSchema = createExperienceSchema.partial({
