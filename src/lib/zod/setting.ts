@@ -2,7 +2,7 @@ import z from "zod";
 import validator from "validator";
 import { emailSchema } from ".";
 
-const settingSchema = z.object({
+const defaultSchema = z.object({
   about_me: z.string({
     message: "About me is required",
   }),
@@ -13,18 +13,15 @@ const settingSchema = z.object({
     .string({
       message: "Image name is required",
     })
-    .min(1, {
-      message: "At least 1 character",
-    })
-    .max(255, {
-      message: "Too long",
-    }),
+    .optional(),
   email: emailSchema,
   phone: z
     .string({
       message: "Phone is required",
     })
-    .refine(validator.isMobilePhone),
+    .refine((param) =>
+      validator.isMobilePhone(param.trim().replaceAll(" ", ""))
+    ),
   address: z.string({
     message: "Address is required",
   }),
@@ -34,45 +31,42 @@ const settingSchema = z.object({
     .string({
       message: "Github is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
-
+    .optional(),
   linkedin: z
     .string({
       message: "Linkedin is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
+    .optional(),
   twitter: z
     .string({
-      required_error: "Twitter is required",
+      message: "Twitter is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
+    .optional(),
   facebook: z
     .string({
-      required_error: "Facebook is required",
+      message: "Facebook is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
+    .optional(),
   instagram: z
     .string({
-      required_error: "Instagram is required",
+      message: "Instagram is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
+    .optional(),
   youtube: z
     .string({
-      required_error: "YouTube is required",
+      message: "YouTube is required",
     })
-    .url({
-      message: "Invalid URL",
-    }),
+    .optional(),
+});
+
+const settingSchema = defaultSchema.partial({
+  // make social media links optional
+  github: true,
+  linkedin: true,
+  twitter: true,
+  facebook: true,
+  instagram: true,
+  youtube: true,
 });
 
 export const updateSettingSchema = settingSchema.partial();
