@@ -73,7 +73,7 @@ export class EducationService {
   }
 
   public async getAll() {
-    return await this.educationModel.find({});
+    return await this.educationModel.find({}).sort("-start_date");
   }
 
   public async makeCurrent(idOrField: string) {

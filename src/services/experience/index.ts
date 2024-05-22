@@ -85,7 +85,7 @@ export class ExperienceService {
   }
 
   public async getAll() {
-    return await this.experienceModel.find({});
+    return await this.experienceModel.find({}).sort("-start_date");
   }
 
   public async makeCurrent(idOrPosition: string) {
