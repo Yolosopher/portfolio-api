@@ -18,6 +18,7 @@ import projectRoutes from "./routes/project/routes";
 import experienceRoutes from "./routes/experience/routes";
 import educationRoutes from "./routes/education/routes";
 import settingRoutes from "./routes/setting/routes";
+import helmet from "helmet";
 
 class App {
   public httpServer: Server;
@@ -62,6 +63,7 @@ class App {
     }
   }
   private setupMiddlewares() {
+    this._app.use(helmet());
     this._app.use(cors());
     this._app.use(json());
 
