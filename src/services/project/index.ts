@@ -131,7 +131,7 @@ export class ProjectService {
   public async getAll(query: any) {
     return await this.projectModel
       .find(query)
-      .sort({ priority: -1 })
+      .sort({ priority: 1 })
       .populate<IProjectPopulated>("stack");
   }
 }
