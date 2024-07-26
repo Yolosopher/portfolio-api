@@ -54,6 +54,7 @@ export const createProjectSchema = z.object({
       message: "Too long",
     })
     .optional(),
+  priority: z.number().int().optional(),
 });
 
 export const updateProjectSchema = createProjectSchema.partial({

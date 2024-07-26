@@ -27,6 +27,7 @@ export class ProjectService {
     description,
     stack,
     group,
+    priority,
   }: {
     name: string;
     image?: string;
@@ -35,6 +36,7 @@ export class ProjectService {
     description?: string;
     stack?: string[];
     group?: string;
+    priority?: number;
   }) {
     // check if project already exists
     const projectExists = await this.getOne(name);
@@ -66,6 +68,10 @@ export class ProjectService {
 
     if (description) {
       payload.description = description;
+    }
+
+    if (priority) {
+      payload.priority = priority;
     }
 
     if (stack && Array.isArray(stack) && stack.length > 0) {
@@ -125,6 +131,7 @@ export class ProjectService {
   public async getAll(query: any) {
     return await this.projectModel
       .find(query)
+      .sort({ priority: -1 })
       .populate<IProjectPopulated>("stack");
   }
 }

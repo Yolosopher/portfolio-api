@@ -30,6 +30,9 @@ class ProjectController {
     if (req.body.github) {
       payload.github = req.body.github;
     }
+    if (req.body.priority) {
+      payload.priority = req.body.priority;
+    }
 
     const result = await projectService.create(payload);
 
@@ -89,7 +92,8 @@ class ProjectController {
       !req.body.description &&
       !req.body.preview &&
       !req.body.github &&
-      !req.body.group
+      !req.body.group &&
+      !req.body.priority
     ) {
       throw new BadRequestError({
         message: "Nothing to update",
@@ -116,6 +120,9 @@ class ProjectController {
     }
     if (req.body.group) {
       payload.group = req.body.group;
+    }
+    if (req.body.priority) {
+      payload.priority = req.body.priority;
     }
     const result = await projectService.update(idOrName, payload);
 

@@ -35,6 +35,10 @@ const ProjectSchema = new Schema<IProject>(
       type: String,
       default: "",
     },
+    priority: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: false,
