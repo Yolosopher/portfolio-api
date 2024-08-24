@@ -114,7 +114,8 @@ class ProjectController {
             !req.body.preview &&
             !req.body.github &&
             !req.body.group &&
-            !req.body.priority
+            !req.body.priority &&
+            !req.body.hidden
         ) {
             throw new BadRequestError({
                 message: "Nothing to update",
@@ -144,6 +145,9 @@ class ProjectController {
         }
         if (req.body.priority) {
             payload.priority = req.body.priority;
+        }
+        if (req.body.hidden) {
+            payload.hidden = req.body.hidden;
         }
         const result = await projectService.update(idOrName, payload);
 
