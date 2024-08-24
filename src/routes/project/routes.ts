@@ -12,23 +12,29 @@ projectRoutes.get("/:idOrName", asyncHandler(projectController.fetchOne));
 projectRoutes.get("/", asyncHandler(projectController.fetchAll));
 
 projectRoutes.post(
-  "/",
-  requireAdmin,
-  validateZod(createProjectSchema, "body"),
-  asyncHandler(projectController.create)
+    "/",
+    requireAdmin,
+    validateZod(createProjectSchema, "body"),
+    asyncHandler(projectController.create)
 );
 
 projectRoutes.put(
-  "/:idOrName",
-  requireAdmin,
-  validateZod(updateProjectSchema, "body"),
-  asyncHandler(projectController.update)
+    "/:idOrName",
+    requireAdmin,
+    validateZod(updateProjectSchema, "body"),
+    asyncHandler(projectController.update)
 );
 
 projectRoutes.delete(
-  "/:idOrName",
-  requireAdmin,
-  asyncHandler(projectController.delete)
+    "/:idOrName",
+    requireAdmin,
+    asyncHandler(projectController.delete)
+);
+
+projectRoutes.patch(
+    "/:idOrName",
+    requireAdmin,
+    asyncHandler(projectController.toggleHidden)
 );
 
 export default projectRoutes;
