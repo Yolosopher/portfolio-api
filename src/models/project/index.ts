@@ -2,48 +2,52 @@ import { Schema, model } from "mongoose";
 import { IProject, ProjectModel } from "./types";
 
 const ProjectSchema = new Schema<IProject>(
-  {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      index: true,
-      lowercase: true,
+    {
+        name: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+            index: true,
+            lowercase: true,
+        },
+        description: {
+            type: String,
+            default: "No description yet",
+        },
+        image: {
+            type: String,
+            default: "",
+        },
+        github: {
+            type: String,
+            default: "",
+        },
+        preview: {
+            type: String,
+            default: "",
+        },
+        stack: {
+            type: [{ type: Schema.Types.ObjectId, ref: "TechStack" }],
+            default: [],
+        },
+        group: {
+            type: String,
+            default: "",
+        },
+        priority: {
+            type: Number,
+            default: 0,
+        },
+        hidden: {
+            type: Boolean,
+            default: false,
+        },
     },
-    description: {
-      type: String,
-      default: "No description yet",
-    },
-    image: {
-      type: String,
-      default: "",
-    },
-    github: {
-      type: String,
-      default: "",
-    },
-    preview: {
-      type: String,
-      default: "",
-    },
-    stack: {
-      type: [{ type: Schema.Types.ObjectId, ref: "TechStack" }],
-      default: [],
-    },
-    group: {
-      type: String,
-      default: "",
-    },
-    priority: {
-      type: Number,
-      default: 0,
-    },
-  },
-  {
-    timestamps: false,
-    versionKey: false,
-  }
+    {
+        timestamps: false,
+        versionKey: false,
+    }
 );
 
 const Project = model<IProject, ProjectModel>("Project", ProjectSchema);

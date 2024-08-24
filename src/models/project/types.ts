@@ -3,19 +3,20 @@ import { Document, Model } from "mongoose";
 import { ITechStack } from "../tech-stack/types";
 
 export interface IProject extends Document {
-  _id: TID;
-  name: string;
-  stack: TID[];
-  description: string;
-  github: string;
-  preview: string;
-  image: string;
-  group: string;
-  priority: number;
+    _id: TID;
+    name: string;
+    stack: TID[];
+    description: string;
+    github: string;
+    preview: string;
+    image: string;
+    group: string;
+    priority: number;
+    hidden: boolean;
 }
 
 export interface IProjectPopulated extends Omit<IProject, "stack"> {
-  stack: ITechStack[];
+    stack: ITechStack[];
 }
 
 export interface ProjectModel extends Model<IProject> {}
