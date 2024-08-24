@@ -146,7 +146,7 @@ class ProjectController {
         if (req.body.priority) {
             payload.priority = req.body.priority;
         }
-        if (req.body.hidden) {
+        if (req.body.hidden === false || req.body.hidden === true) {
             payload.hidden = req.body.hidden;
         }
         const result = await projectService.update(idOrName, payload);
