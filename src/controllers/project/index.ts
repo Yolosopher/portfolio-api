@@ -33,6 +33,9 @@ class ProjectController {
         if (req.body.priority) {
             payload.priority = req.body.priority;
         }
+        if (req.body.hidden) {
+            payload.hidden = req.body.hidden;
+        }
 
         const result = await projectService.create(payload);
 
@@ -55,7 +58,9 @@ class ProjectController {
         const hidden = req.query?.hidden;
 
         const query: any = group ? { group } : {};
-        if (hidden) {
+        if (hidden === "true") {
+            query.hidden = true;
+        } else if (hidden === "false") {
             query.hidden = false;
         }
 

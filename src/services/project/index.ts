@@ -28,6 +28,7 @@ export class ProjectService {
         stack,
         group,
         priority,
+        hidden,
     }: {
         name: string;
         image?: string;
@@ -37,6 +38,7 @@ export class ProjectService {
         stack?: string[];
         group?: string;
         priority?: number;
+        hidden?: boolean;
     }) {
         // check if project already exists
         const projectExists = await this.getOne(name);
@@ -72,6 +74,9 @@ export class ProjectService {
 
         if (priority) {
             payload.priority = priority;
+        }
+        if (typeof hidden === "boolean") {
+            payload.hidden = hidden;
         }
 
         if (stack && Array.isArray(stack) && stack.length > 0) {
