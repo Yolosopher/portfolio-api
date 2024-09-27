@@ -12,7 +12,7 @@ const translationRoutes = Router();
 
 translationRoutes.get("/", asyncHandler(translationController.fetch));
 
-translationRoutes.patch(
+translationRoutes.put(
     "/",
     requireAdmin,
     validateZod(updateTranslationSchema, "body"),

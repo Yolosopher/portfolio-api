@@ -61,7 +61,7 @@ describe("Translations", () => {
     };
     it("should update translation", async () => {
         const res = await supertest(server)
-            .patch("/translation")
+            .put("/translation")
             .set("Authorization", `Bearer ${super_admin_auth_token}`)
             .send(payload);
 
