@@ -4,7 +4,7 @@ import sessionService, {
   SessionService,
   SessionServiceMethodParams,
 } from "@/services/session";
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions } from "jsonwebtoken";
 
 class JWT {
   private secret: string;
@@ -14,9 +14,9 @@ class JWT {
     this.expiresIn = CONFIG.jwt_expires_in;
   }
   public async generate(payload: JWT_PAYLOAD) {
-    const token = jwt.sign(payload, this.secret, {
+    const token = jwt.sign(payload, this.secret as jwt.Secret, {
       expiresIn: this.expiresIn,
-    });
+    } as SignOptions);
     await this.sessionService.addToken({
       token,
       userId: payload._id.toString(),
