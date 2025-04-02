@@ -68,6 +68,9 @@ const errorHandler = (
   }
 
   // Unhandled errors
+  console.log(JSON.stringify(err.message, null, 2));
+  console.log(JSON.stringify(err.name, null, 2));
+  console.log(JSON.stringify(err.stack, null, 2));
   console.error(JSON.stringify(err, null, 2));
   console.log(JSON.stringify(err, null, 2));
   return res
