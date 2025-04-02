@@ -69,6 +69,7 @@ const errorHandler = (
 
   // Unhandled errors
   console.error(JSON.stringify(err, null, 2));
+  console.log(JSON.stringify(err, null, 2));
   return res
     .status(500)
     .json({ errors: [{ message: "Something went wrong" }] });
