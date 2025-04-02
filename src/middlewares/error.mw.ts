@@ -1,6 +1,7 @@
 import CONFIG from "@/config";
 import CustomError from "@/errors";
 import { NextFunction, Request, Response } from "express";
+import multer from "multer";
 import { ZodError } from "zod";
 
 const errorHandler = (
@@ -36,6 +37,14 @@ const errorHandler = (
     return res.status(statusCode).json({ errors });
   }
 
+  if (
+    err instanceof multer.MulterError &&
+    err.code === "LIMIT_UNEXPECTED_FILE"
+  ) {
+    return res.status(400).json({
+      errors: [{ message: "Field name should be cv" }],
+    });
+  }
   if (err instanceof ZodError) {
     const formatedError = err.format() as any;
     const errors: { field: string; message: string }[] = [];

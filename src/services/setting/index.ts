@@ -1,6 +1,8 @@
 import BadRequestError from "@/errors/BadRequestError";
 import Setting from "@/models/setting";
 import { SettingModel } from "@/models/setting/types";
+import { existsSync } from "fs";
+import path from "path";
 
 export class SettingService {
   constructor(protected settingModel: SettingModel) {}
@@ -106,6 +108,17 @@ export class SettingService {
         new: true,
       }
     ))!;
+  }
+
+  public downloadCVPath() {
+    const cvPath = path.resolve("cv-file/Nika_Nishnianidze.pdf");
+    const cvExists = existsSync(cvPath);
+    if (!cvExists) {
+      throw new BadRequestError({
+        message: "CV not found",
+      });
+    }
+    return cvPath;
   }
 }
 
