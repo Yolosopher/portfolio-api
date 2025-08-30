@@ -66,7 +66,9 @@ class App {
   }
   private setupMiddlewares() {
     this._app.use(helmet());
-    this._app.use(cors());
+    this._app.use(cors({
+      origin: "*"
+    }));
     this._app.use(json());
 
     // uncomment if you need urlencoded
